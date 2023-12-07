@@ -26,12 +26,13 @@
                 <div class="col-md-3 ps-5">
   
                   <h6 class="mb-0">Full name</h6>
-  
                 </div>
                 <div class="col-md-9 pe-5">
   
                   <input type="text" name="name" class="form-control form-control-lg" />
-  
+                  <% if (locals.errors && errors.name) { %>
+                    <p class="text-danger"><%= errors.name.msg %></p>
+                  <% } %> 
                 </div>
               </div>
 
@@ -46,7 +47,9 @@
                 <div class="col-md-9 pe-5">
   
                   <input type="email" name="email" class="form-control form-control-lg" placeholder="example@gmail.com" />
-  
+                  <% if (locals.errors && errors.email) { %>
+                    <p class="text-danger"><%= errors.email.msg %></p>
+                  <% } %>
                 </div>
               </div>
   
@@ -76,7 +79,9 @@
                 <div class="col-md-9 pe-5">
   
                   <input type="password" name="password" class="form-control form-control-lg" >
-  
+                  <% if (locals.errors && errors.password) { %>
+                    <p class="text-danger"><%= errors.password.msg %></p>
+                  <% } %>
                 </div>
               </div>
   
