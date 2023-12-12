@@ -129,7 +129,7 @@ register: async(req, res) => {
         req.session.userLogged = userToLogin;
   
         if(userToLogin) {
-          res.cookie("test", "hollaaa",{ maxAge: 1000 * 30});
+          res.cookie("test", "Funcionando",{ maxAge: 1000 * 30});
         }
         return res.redirect('/');
       } 
@@ -141,9 +141,12 @@ register: async(req, res) => {
     return res.render('login', {
       errors: {
         email: {
-          msg: 'No se encuentra este email en nuestra base de datos'
+          msg: 'No se encuentra este email en nuestra base de datos',
+        password: {
+          msg: 'Contraseña incorrecta'
         }
       }
+    }
     });
   },
   logout: (req, res) => {

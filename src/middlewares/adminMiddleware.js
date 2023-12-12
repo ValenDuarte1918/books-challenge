@@ -1,9 +1,9 @@
-const db = require('../database/models/User');
-const adminMiddleware = (req, res, next) => {
-    if (!req.session.userLogged || req.session.user.categoryId !== 'admin') {
-        return res.redirect('/users/login');
+function adminMiddleware(req, res, next) {
+    if (req.session.user && req.session.user.isAdmin) {
+        next();
+    } else {
+        res.redirect('/');
     }
-    next();
-};
+}
 
 module.exports = adminMiddleware;

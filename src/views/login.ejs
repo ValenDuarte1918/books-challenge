@@ -18,7 +18,7 @@
         <div class="col-xl-6">
   
           <h1 class="text-white mb-4">Login </h1>
-  
+          <ul class="errores"></ul>
           <form action="/users/login" method="POST" class="card" style="border-radius: 15px;">
             <div class="card-body">
   
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-9 pe-5">
   
-                  <input type="email" name="email" class="form-control form-control-lg" placeholder="example@gmail.com" />
+                  <input class="errors" type="email" name="email" id= "email" class="form-control form-control-lg" placeholder="example@gmail.com" />
                   <% if (locals.errors && errors.email) { %>
                     <p class="text-danger"><%= errors.email.msg %></p>
                   <% } %>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-md-9 pe-5">
   
-                  <input type="password" name="password" class="form-control form-control-lg" >
+                  <input class="errors" type="password" name="password" value="" class="form-control form-control-lg" >
                 </div>
               </div>
   
@@ -65,7 +65,8 @@
     </div>
   </section>
 </div>
-<script src="/js/validationsLogin.js"></script>
 <%- include('partials/footer.ejs') %>
 </body>
+<script src="/js/validationsLogin.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>

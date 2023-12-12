@@ -5,6 +5,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const {body} = require('express-validator'); 
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const adminMiddleware = require('../middlewares/adminMiddleware');
+const recordarMiddleware = require('../middlewares/recordarMiddleware');
 
 const validations = [
     body('name').notEmpty().withMessage('Debes completar el campo nombre'),
@@ -35,12 +36,16 @@ const validationsLogin = [
                 }
             });
         }),
+    body('password').notEmpty()
+    .withMessage('Debes completar el campo contraseña')
+    .bail().isLength({min: 8})
+    .withMessage('La contraseña debe tener al menos 8 caracteres'),
 ]
     
 
 const router = express.Router();
 
-router.get('/', mainController.home);
+router.get('/', recordarMiddleware, mainController.home);
 router.get('/books/detail/:id',authMiddleware , mainController.bookDetail);
 router.get('/books/search', mainController.bookSearch);
 router.post('/books/search', mainController.bookSearchResult);

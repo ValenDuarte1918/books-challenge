@@ -4,6 +4,7 @@ const session = require('express-session');
 const cookies = require('cookie-parser');
 const {check, validationResult} = require('express-validator');
 const rememberUser = require('./middlewares/recordarMiddleware'); 
+const userLogged = require('./middlewares/userLogged');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(session({
 app.use(cookies());
 app.use(express.static('public'));
 app.use(rememberUser)
+app.use(userLogged);
 
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
