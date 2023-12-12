@@ -57,7 +57,7 @@ router.get('/users/login', guestMiddleware, mainController.login);
 router.post('/users/login',validationsLogin, mainController.processLogin);
 router.get('/logout/', mainController.logout);
 router.post('/books/:id', mainController.deleteBook);
-router.get('/books/edit/:id', adminMiddleware, mainController.edit);
-router.post('/books/edit/:id', adminMiddleware, mainController.processEdit);
+router.get('/books/edit/:id', mainController.edit);
+router.post('/books/edit/:id', mainController.processEdit);
 
 module.exports = router;
