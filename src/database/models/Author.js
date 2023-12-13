@@ -22,6 +22,7 @@ module.exports = (sequelize, dataTypes) => {
 
   Author.associate = function (models) {
     Author.belongsToMany(models.Book, {
+      onDelete: 'CASCADE',
       as: 'books',
       through: 'BooksAuthors',
       foreingKey: 'AuthorId',

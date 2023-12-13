@@ -36,28 +36,20 @@ const mainController = {
         }
       }
     });
-  
-    if (books.length > 0) {
-      // Si se encontraron libros, redirige al primer libro encontrado
-      res.redirect('/books/detail/' + books[0].id);
-    } else {
-      // Si no se encontraron libros, renderiza la vista de búsqueda con un array vacío
       res.render('search', { books });
-    }
   },
   deleteBook: async(req, res) => {
     // Implement delete book
     const bookId = req.params.id;
 
-    const book = await db.Book.findByPk(bookId);
     
   
     await db.Book.destroy({
       where: {
-        id: bookId
-      }
+        id: bookId,
+      },
     });
-    res.render('/', { book }); // no puedo hacer que me redirija a la home pero se borra el libro
+    res.redirect('/'); // no puedo hacer que me redirija a la home pero se borra el libro
   },
   authors: (req, res) => {
     db.Author.findAll()

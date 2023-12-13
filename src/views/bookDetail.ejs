@@ -19,12 +19,14 @@
       <p class="lead mb-4 fw-bold">Author: <%= authors.name %></p>
           <p class="lead mb-4 fw-bold">Release Date: <%= authors.country %> </p>
           <p class="lead mb-4"><%= book.description %></p>
+          <% if (locals.admin) { %>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <form method="POST" action="/books/<%= book.id %>">
-            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="location.href= '/Books/edit/<%= book.id %>'">Edit</button>
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="location.href= '/Books/edit/<%= book.id %>'" >Edit</button>
             <button  type="submit" class="btn btn-outline-secondary btn-lg px-4" >Delete</button>
             </form>
           </div>
+          <% } %>
         </div>
       </div>
   </div>

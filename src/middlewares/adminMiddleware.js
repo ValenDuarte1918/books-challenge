@@ -1,5 +1,6 @@
 function adminMiddleware(req, res, next) {
-    if (req.session.user && req.session.user.CategoryId !== 1) {
+    console.log(req.session.user);
+    if (req.session && req.session.userLogged.categoryId == 1) {
         next();
     } else {
         res.redirect('/');
